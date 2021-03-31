@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['sort.py'],
-             pathex=['E:\\Users\\WyllerMachado\\Desktop\\PROJETO SORT PY'],
+             pathex=['C:\\Users\\Wyller\\Documents\\SortPy'],
              binaries=[],
              datas=[],
              hiddenimports=[],
