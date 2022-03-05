@@ -1,0 +1,48 @@
+{
+  "documentos": [
+    ".doc", ".docx", ".htm", ".odt",
+    ".pdf", ".xls", ".xlsx", ".xlsm",
+    ".ods", ".ppt", ".pptx", ".txt",
+    ".mobi", ".epub"
+  ],
+
+  "imagens": [
+    ".ai", ".bmp", ".gif", ".ico",
+    ".jpeg", ".jpg", ".png", ".ps",
+    ".psd", ".svg", ".tif", ".tiff"
+  ],
+
+  "videos": [
+    ".3g2", ".3gp", ".avi", ".flv",
+    ".h264", ".m4v", ".mkv", ".mov",
+    ".mp4", ".mpg", ".mpeg", ".rm",
+    ".swf", ".vob", ".wmv", ".srt"
+  ],
+
+  "audios": [
+    ".aif", ".cda", ".mid", ".mp3",
+    ".mpa", ".ogg", ".wav", ".wma",
+    ".wpl"
+  ],
+
+  "programas": [
+    ".apk", ".bat", ".bin", ".cgi",
+    ".pl", ".com", ".exe", ".gadget",
+    ".jar", ".msi", ".py", ".wsf"
+  ],
+
+  "compactados": [
+    ".7z", ".arj", ".deb", ".pkg",
+    ".rar", ".rpm", ".tar.gz", ".z",
+    ".zip", ".iso"
+  ],
+
+  "arquivos": [
+    ".apk", ".torrent", ".bnp", ".h2w",
+    ".php", ".bak", ".cab", ".cfg",
+    ".cpl", ".cur", ".dll", ".dmp",
+    ".drv", ".icns", ".ini", ".sys",
+    ".tmp", ".download", ".css", ".webp",
+    ".html", ".xsl"
+  ]
+}
