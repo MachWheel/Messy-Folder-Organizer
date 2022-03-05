@@ -4,3 +4,4 @@
 .sort.spec
 /venv/
 /__pycache__/
+/.git/
