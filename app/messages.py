@@ -1,4 +1,4 @@
-def MSG_CONFIRM(working_folder):
+def CONFIRM(working_folder):
     return (f"Os arquivos da pasta:"
             f"\n'{working_folder}'\n"
             f"Serão organizados de acordo "
@@ -6,15 +6,28 @@ def MSG_CONFIRM(working_folder):
             f"DESEJA CONTINUAR?")
 
 
-def MSG_MOVED(file, destination):
+def MOVED(file, destination):
     return f"\n[#] {file}\nMOVIDO PARA: {destination}\n"
 
 
-def MSG_IGNORED(file):
+def IGNORED(file):
     return f"\n[!] {file}\nFOI IGNORADO, IMPOSSIVEL MOVER."
 
 
-def MSG_CREATED(folder):
-    return (f"\nPasta '{folder}' criada.\n"
-            f"Movendo arquivos para ela...\n\n")
+def DEST_FOLDER(folder, created):
+    if created:
+        return (f"\nPasta '{folder}' criada.\n"
+                f"Movendo arquivos para ela...\n\n")
+    else:
+        return f"Movendo arquivos para '{folder}'..."
 
+
+APP_TITLE = 'Organizador'
+
+SELECT_FOLDER = 'Selecione uma pasta para organizar: '
+
+DONE = (f"ARQUIVOS ORGANIZADOS!\n"
+        f"PRESSIONE OK PARA ABRIR"
+        f"A PASTA CRIADA")
+
+CANCELLED = "CANCELANDO: Operação abortada."

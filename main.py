@@ -4,19 +4,20 @@ import shutil
 
 import PySimpleGUI as sg
 
-from app import get_working_folder, make_destination_folder, get_category_name, make_category_folder, Logger
-from app.messages import MSG_CONFIRM, MSG_MOVED, MSG_IGNORED
+from app import get_working_folder, make_destination_folder, get_category_name, make_category_folder, Log
+from app.messages import CANCELLED, CONFIRM, MOVED, IGNORED, DEST_FOLDER, DONE
 from app.names import is_application, is_log
 
 
 def main():
     working_folder = get_working_folder()
+    log = Log(working_folder)
 
-    if not sg.popup_ok_cancel(MSG_CONFIRM(working_folder)):
-        raise SystemExit("Cancelado, operação abortada.")
+    if not sg.popup_ok_cancel(CONFIRM(working_folder)):
+        raise SystemExit(CANCELLED)
 
-    destination_folder = make_destination_folder(working_folder)
-    logger = Logger(working_folder)
+    dest_folder, created = make_destination_folder(working_folder)
+    log.msg(DEST_FOLDER(dest_folder, created))
 
     for file_name in os.listdir(working_folder):
         file = os.path.join(working_folder, file_name)
@@ -24,16 +25,16 @@ def main():
             continue
         file_extension = str.lower(os.path.splitext(file)[1])
         category_name = get_category_name(file_extension)
-        category_folder = make_category_folder(destination_folder, category_name)
+        category_folder = make_category_folder(dest_folder, category_name)
         try:
             shutil.move(file, category_folder)
-            logger.log(MSG_MOVED(file_name, category_folder))
+            log.msg(MOVED(file_name, category_folder))
         except shutil.Error as e:
-            logger.log(MSG_IGNORED(file_name))
-            logger.log(e)
+            log.msg(IGNORED(file_name))
+            log.msg(e)
 
-    if sg.popup_ok("ARQUIVOS ORGANIZADOS!\nPRESSIONE OK PARA ABRIR PASTA ORGANIZADA"):
-        os.startfile(os.path.realpath(destination_folder))
+    if sg.popup_ok(DONE):
+        os.startfile(os.path.realpath(dest_folder))
         return
 
 

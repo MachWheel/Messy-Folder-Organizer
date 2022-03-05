@@ -1,36 +1,37 @@
 # coding=utf-8
-from .names import mes_ano
-from .logger import Logger
-from os import mkdir
-import PySimpleGUI as sg
 import json
+from os import mkdir
+
+import PySimpleGUI as sg
+
+from .logger import Log
+from .names import mes_ano
+from .messages import APP_TITLE, CANCELLED, SELECT_FOLDER
 
 
 def get_working_folder() -> str:
     working_folder = sg.Window(
-        'Organizador',
+        APP_TITLE,
         [
-            [sg.Text('Selecione uma pasta para organizar: ')],
+            [sg.Text(SELECT_FOLDER)],
             [sg.In(), sg.FolderBrowse()],
             [sg.Open(), sg.Cancel()]
         ]
     ).read(close=True)[1][0]
     if not working_folder:
-        sg.popup("Cancelado", "Nenhuma pasta escolhida")
-        raise SystemExit("Cancelando, nenhuma pasta escolhida.")
+        sg.popup(CANCELLED)
+        raise SystemExit(CANCELLED)
     return working_folder
 
 
-def make_destination_folder(working_folder) -> str:
+def make_destination_folder(working_folder) -> tuple[str, bool]:
     dest_folder = f"{working_folder}/{mes_ano()}"
-    msgs = Logger(working_folder)
     try:
         mkdir(dest_folder)
-        msgs.log(f"Pasta '{dest_folder}' criada.\n"
-                 f"Movendo arquivos para ela...")
+        created = True
     except FileExistsError:
-        msgs.log(f"Movendo arquivos para '{dest_folder}'...")
-    return dest_folder
+        created = False
+    return dest_folder, created
 
 
 def get_extensions() -> dict[str, list[str]]:
