@@ -1,4 +1,8 @@
 {
+  "ignorados": [
+    ".exe", ".ico", ".lnk", ".py"
+  ],
+
   "documentos": [
     ".doc", ".docx", ".htm", ".odt",
     ".pdf", ".xls", ".xlsx", ".xlsm",
@@ -7,7 +11,7 @@
   ],
 
   "imagens": [
-    ".ai", ".bmp", ".gif", ".ico",
+    ".ai", ".bmp", ".gif",
     ".jpeg", ".jpg", ".png", ".ps",
     ".psd", ".svg", ".tif", ".tiff"
   ],
@@ -27,22 +31,13 @@
 
   "programas": [
     ".apk", ".bat", ".bin", ".cgi",
-    ".pl", ".com", ".exe", ".gadget",
-    ".jar", ".msi", ".py", ".wsf"
+    ".pl", ".com", ".gadget",
+    ".jar", ".msi", ".wsf"
   ],
 
   "compactados": [
     ".7z", ".arj", ".deb", ".pkg",
     ".rar", ".rpm", ".tar.gz", ".z",
     ".zip", ".iso"
-  ],
-
-  "arquivos": [
-    ".apk", ".torrent", ".bnp", ".h2w",
-    ".php", ".bak", ".cab", ".cfg",
-    ".cpl", ".cur", ".dll", ".dmp",
-    ".drv", ".icns", ".ini", ".sys",
-    ".tmp", ".download", ".css", ".webp",
-    ".html", ".xsl"
   ]
 }

@@ -4,7 +4,7 @@ import shutil
 
 import PySimpleGUI as sg
 
-from app import get_working_folder, make_destination_folder, get_category_name, make_category_folder, Log
+from app import get_working_folder, make_destination_folder, get_category_name, make_category_folder, Log, ignore_file
 from app.messages import CANCELLED, CONFIRM, MOVED, IGNORED, DEST_FOLDER, DONE
 from app.names import is_application, is_log
 
@@ -25,6 +25,8 @@ def main():
             continue
         file_extension = str.lower(os.path.splitext(file)[1])
         category_name = get_category_name(file_extension)
+        if ignore_file(category_name):
+            continue
         category_folder = make_category_folder(dest_folder, category_name)
         try:
             shutil.move(file, category_folder)

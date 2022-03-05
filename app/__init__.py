@@ -43,9 +43,13 @@ def get_category_name(file_extension) -> str:
     extensions = get_extensions()
     for category, entries in extensions.items():
         if file_extension in entries:
-            folder_name = category.capitalize()
-            return folder_name
-    return "Arquivos"
+            category_name = category.capitalize()
+            return category_name
+    return "Outros"
+
+
+def ignore_file(category_name):
+    return True if category_name == "Ignorados" else False
 
 
 def make_category_folder(destination_folder, category_name) -> str:
