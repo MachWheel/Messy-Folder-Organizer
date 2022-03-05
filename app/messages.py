@@ -1,3 +1,7 @@
+# coding=utf-8
+from .filter import Filter
+
+
 def CONFIRM(working_folder):
     return (f"Os arquivos da pasta:"
             f"\n'{working_folder}'\n"
@@ -6,20 +10,20 @@ def CONFIRM(working_folder):
             f"DESEJA CONTINUAR?")
 
 
-def MOVED(file, destination):
-    return f"\n[#] {file}\nMOVIDO PARA: {destination}\n"
+def MOVED(f: Filter):
+    return f"\n[#] ARQUIVO '{f.file_name}{f.file_extension}' MOVIDO PARA: '{f.category_name}'\n"
 
 
-def IGNORED(file):
-    return f"\n[!] {file}\nFOI IGNORADO, IMPOSSIVEL MOVER."
+def IGNORED(f: Filter):
+    return f"\n[!] ARQUIVO '{f.file_name}{f.file_extension}' IGNORADO."
 
 
-def DEST_FOLDER(folder, created):
-    if created:
-        return (f"\nPasta '{folder}' criada.\n"
-                f"Movendo arquivos para ela...\n\n")
-    else:
-        return f"Movendo arquivos para '{folder}'..."
+def DESTINATION(folder):
+    return f"\n[!] OS ARQUIVOS SERÃO MOVIDOS PARA:\n'{folder}'\n"
+
+
+def CREATED(folder):
+    return f"\n[#] PASTA '{folder}' CRIADA.\n"
 
 
 APP_TITLE = 'Organizador'

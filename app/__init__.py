@@ -1,61 +1,81 @@
 # coding=utf-8
-import json
+import os
+import shutil
 from os import mkdir
 
 import PySimpleGUI as sg
 
-from .logger import Log
-from .names import mes_ano
-from .messages import APP_TITLE, CANCELLED, SELECT_FOLDER
+from .filter import Filter
+from .messages import APP_TITLE, CANCELLED, CREATED, SELECT_FOLDER, DESTINATION, MOVED, IGNORED, DONE, CONFIRM
+from .names import mes_ano, log_name
 
 
-def get_working_folder() -> str:
-    working_folder = sg.Window(
-        APP_TITLE,
-        [
-            [sg.Text(SELECT_FOLDER)],
-            [sg.In(), sg.FolderBrowse()],
-            [sg.Open(), sg.Cancel()]
-        ]
-    ).read(close=True)[1][0]
-    if not working_folder:
-        sg.popup(CANCELLED)
-        raise SystemExit(CANCELLED)
-    return working_folder
+class App:
+    def __init__(self, working_folder):
+        self.working_folder = working_folder
+        self.destination_folder = None
+        self.log_file = f"{self.working_folder}/{log_name}.txt"
 
 
-def make_destination_folder(working_folder) -> tuple[str, bool]:
-    dest_folder = f"{working_folder}/{mes_ano()}"
-    try:
-        mkdir(dest_folder)
-        created = True
-    except FileExistsError:
-        created = False
-    return dest_folder, created
+    def start(self):
+        if not self.confirm_action():
+            return
+        self.make_destination_folder()
+        for file_name in os.listdir(self.working_folder):
+            f = Filter(self.working_folder, file_name)
+            if f.ignored_file:
+                continue
+            self.move_file(f)
+        self.done_moving()
 
 
-def get_extensions() -> dict[str, list[str]]:
-    with open("app/extensions.json", "r") as extensions_file:
-        return json.load(extensions_file)
+    def confirm_action(self):
+        confirm = sg.popup_ok_cancel(CONFIRM(self.working_folder))
+        if confirm != 'OK':
+            sg.popup(CANCELLED)
+            return False
+        return True
 
 
-def get_category_name(file_extension) -> str:
-    extensions = get_extensions()
-    for category, entries in extensions.items():
-        if file_extension in entries:
-            category_name = category.capitalize()
-            return category_name
-    return "Outros"
+    def make_destination_folder(self) -> None:
+        dest_folder = f"{self.working_folder}/{mes_ano()}"
+        try:
+            mkdir(dest_folder)
+            self.log(CREATED(dest_folder))
+        except FileExistsError:
+            pass
+        self.destination_folder = dest_folder
+        self.log(DESTINATION(dest_folder))
 
 
-def ignore_file(category_name):
-    return True if category_name == "Ignorados" else False
+    def log(self, message) -> None:
+        with open(self.log_file, 'a') as log_file:
+            log_file.write(message)
+            print(message)
 
 
-def make_category_folder(destination_folder, category_name) -> str:
-    category_folder = f"{destination_folder}/{category_name}"
-    try:
-        mkdir(category_folder)
-    except FileExistsError:
-        pass
-    return category_folder
+    def move_file(self, f: Filter):
+        category_folder = self.make_category_folder(f.category_name)
+        try:
+            shutil.move(f.file, category_folder)
+            self.log(MOVED(f))
+        except shutil.Error as e:
+            self.log(IGNORED(f))
+            self.log(e)
+
+
+    def make_category_folder(self, category_name) -> str:
+        category_folder = f"{self.destination_folder}/{category_name}"
+        try:
+            mkdir(category_folder)
+            self.log(CREATED(category_folder))
+        except FileExistsError:
+            pass
+        return category_folder
+
+
+    def done_moving(self) -> None:
+        if sg.popup_ok(DONE):
+            os.startfile(os.path.realpath(self.destination_folder))
+            os.startfile(os.path.realpath(self.log_file))
+            return
