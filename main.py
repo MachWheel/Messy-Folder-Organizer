@@ -1,18 +1,16 @@
 # coding=utf-8
 import os
 import shutil
+
 import PySimpleGUI as sg
-import sys
+
 from app import get_working_folder, make_destination_folder, get_category_name, make_category_folder, Logger
-from app.names import is_application, is_log
 from app.messages import MSG_CONFIRM, MSG_MOVED, MSG_IGNORED
+from app.names import is_application, is_log
 
 
 def main():
-    working_folder = None
-
-    if len(sys.argv) == 1:
-        working_folder = get_working_folder()
+    working_folder = get_working_folder()
 
     if not sg.popup_ok_cancel(MSG_CONFIRM(working_folder)):
         raise SystemExit("Cancelado, operação abortada.")
@@ -32,10 +30,11 @@ def main():
             logger.log(MSG_MOVED(file_name, category_folder))
         except shutil.Error as e:
             logger.log(MSG_IGNORED(file_name))
+            logger.log(e)
 
     if sg.popup_ok("ARQUIVOS ORGANIZADOS!\nPRESSIONE OK PARA ABRIR PASTA ORGANIZADA"):
         os.startfile(os.path.realpath(destination_folder))
-        return "CONCLUIDO!"
+        return
 
 
 if __name__ == "__main__":
