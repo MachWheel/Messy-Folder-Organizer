@@ -2,7 +2,7 @@
 from datetime import datetime
 
 
-def mes_ano():
+def MES_ANO():
     data = datetime.now()
     meses = ('Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
              'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro')
@@ -10,5 +10,5 @@ def mes_ano():
     return meses[mes] + " " + str(data.year)
 
 
-log_name = (f"Movidos em "
-            f"{datetime.now().strftime('%d_%m_%Y às %H-%M')}")
+LOG_NAME = (f"Registro "
+            f"{datetime.now().strftime('%d_%m_%Y às %H-%M')}.log")
