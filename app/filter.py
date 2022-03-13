@@ -17,7 +17,7 @@ class Filter:
 
     @property
     def extensions(self) -> dict[str, list[str]]:
-        with open("app/extensions.json", "r") as extensions_file:
+        with open("resource/extensions.json", "r") as extensions_file:
             self.log.debug(EXTS_LOADED)
             return json.load(extensions_file)
 

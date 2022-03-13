@@ -79,5 +79,5 @@ class App:
         if sg.popup_ok(DONE):
             os.startfile(os.path.realpath(self.destination_folder))
             self.log.debug(FINISHED)
-            os.startfile(LOG_NAME)
+            os.startfile('app_log.log')
             return
