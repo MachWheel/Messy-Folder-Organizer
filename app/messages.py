@@ -38,7 +38,7 @@ FACTORY = '\nFACTORY INICIALIZADA.\n'
 
 STARTED = '\nAPLICAÇÃO INICIALIZADA.\n'
 
-SELECT_FOLDER = 'Selecione uma pasta para organizar: '
+SELECT_FOLDER = 'Escolha uma pasta bagunçada para organizar:'
 
 DONE = (f"ARQUIVOS ORGANIZADOS!\n"
         f"PRESSIONE OK PARA ABRIR"

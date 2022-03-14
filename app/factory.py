@@ -4,7 +4,9 @@ import logging
 import PySimpleGUI as sg
 
 from . import App
-from .messages import APP_TITLE, CANCELLED, SELECT_FOLDER, WORKING, FACTORY, STARTED
+from .elements import BROWSE, START, TEXT, INPUT
+from .messages import APP_TITLE, CANCELLED, WORKING, FACTORY, STARTED
+from .names import THEME
 
 
 class Factory:
@@ -20,17 +22,19 @@ class Factory:
 
 
     def get_working_folder(self) -> str:
+        sg.theme(THEME)
         working_folder = sg.Window(
             APP_TITLE,
             [
-                [sg.Text(SELECT_FOLDER)],
-                [sg.In(), sg.FolderBrowse()],
-                [sg.Open(), sg.Cancel()]
-            ]
-        ).read(close=True)[1][0]
+                [TEXT],
+                [BROWSE, INPUT, START]
+            ], size=(480, 150)
+        ).read(close=True)[1]['-IN-']
+
         if not working_folder:
             sg.popup(CANCELLED)
             self.log.info(CANCELLED)
             raise SystemExit(CANCELLED)
+
         self.log.info(WORKING(working_folder))
         return working_folder
