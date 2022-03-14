@@ -1,25 +1,17 @@
 # coding=utf-8
-import json
 import logging
 from os import path
 
-from .messages import EXTS_LOADED
 from .names import LOG_NAME
 
 
 class Filter:
-    def __init__(self, working_folder, file_name):
+    def __init__(self, app, file_name):
         self.log = logging.getLogger(__name__)
-        self.file = path.join(working_folder, file_name)
+        self.file = path.join(app.working_folder, file_name)
         self.file_name = path.splitext(file_name)[0]
         self.file_extension = str.lower(path.splitext(self.file)[1])
-
-
-    @property
-    def extensions(self) -> dict[str, list[str]]:
-        with open("resource/extensions.json", "r") as extensions_file:
-            self.log.debug(EXTS_LOADED)
-            return json.load(extensions_file)
+        self.extensions = app.extensions
 
 
     @property

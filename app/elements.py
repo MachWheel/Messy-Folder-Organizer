@@ -3,7 +3,7 @@ from PySimpleGUI import BUTTON_TYPE_BROWSE_FOLDER, BUTTON_TYPE_READ_FORM
 
 from . import icons
 from .names import THEME
-from .messages import SELECT_FOLDER
+from .messages import APP_TITLE, SELECT_FOLDER
 
 sg.theme(THEME)
 
@@ -27,3 +27,12 @@ START = sg.B(button_type=BUTTON_TYPE_READ_FORM,
 
 
 INPUT = sg.In(k='-IN-', size=(30, 4), font="Default 14")
+
+
+MAIN_WINDOW = sg.Window(
+    APP_TITLE,
+    [
+        [TEXT],
+        [BROWSE, INPUT, START]
+    ], size=(480, 150)
+)

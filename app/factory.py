@@ -1,11 +1,12 @@
 # coding=utf-8
 import logging
+import json
 
 import PySimpleGUI as sg
 
 from . import App
-from .elements import BROWSE, START, TEXT, INPUT
-from .messages import APP_TITLE, CANCELLED, WORKING, FACTORY, STARTED
+from .elements import MAIN_WINDOW
+from .messages import CANCELLED, WORKING, FACTORY, STARTED, EXTS_LOADED
 from .names import THEME
 
 
@@ -16,25 +17,28 @@ class Factory:
 
 
     def create_app(self):
-        working_folder = self.get_working_folder()
+        extensions = self._load_extensions()
+        working_folder = self._set_working_folder()
         self.log.debug(STARTED)
-        return App(working_folder)
+        return App(working_folder, extensions)
 
 
-    def get_working_folder(self) -> str:
+    def _load_extensions(self) -> dict[str, list[str]]:
+        with open("resource/extensions.json", "r") as extensions_file:
+            self.log.debug(EXTS_LOADED)
+            return json.load(extensions_file)
+
+
+    def _set_working_folder(self) -> str:
         sg.theme(THEME)
-        working_folder = sg.Window(
-            APP_TITLE,
-            [
-                [TEXT],
-                [BROWSE, INPUT, START]
-            ], size=(480, 150)
-        ).read(close=True)[1]['-IN-']
-
+        working_folder = MAIN_WINDOW.read(close=True)[1]['-IN-']
         if not working_folder:
-            sg.popup(CANCELLED)
-            self.log.info(CANCELLED)
-            raise SystemExit(CANCELLED)
-
+            self._abort_operation()
         self.log.info(WORKING(working_folder))
         return working_folder
+
+
+    def _abort_operation(self):
+        sg.popup(CANCELLED)
+        self.log.info(CANCELLED)
+        raise SystemExit(CANCELLED)

@@ -15,9 +15,10 @@ from .names import MES_ANO, LOG_NAME
 
 
 class App:
-    def __init__(self, working_folder):
+    def __init__(self, working_folder, extensions):
         self.log = logging.getLogger(__name__)
         self.working_folder = working_folder
+        self.extensions = extensions
         self.destination_folder = None
 
 
@@ -26,7 +27,7 @@ class App:
             return
         self.make_destination_folder()
         for file_name in os.listdir(self.working_folder):
-            f = Filter(self.working_folder, file_name)
+            f = Filter(self, file_name)
             if f.ignored_file:
                 continue
             self.move_file(f)
