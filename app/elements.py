@@ -1,9 +1,9 @@
 import PySimpleGUI as sg
 from PySimpleGUI import BUTTON_TYPE_BROWSE_FOLDER, BUTTON_TYPE_READ_FORM
 
-from . import icons
-from .names import THEME
-from .messages import APP_TITLE, SELECT_FOLDER
+from resources import icons
+from resources.messages import APP_TITLE, SELECT_FOLDER, DONE
+from resources.names import THEME
 
 sg.theme(THEME)
 

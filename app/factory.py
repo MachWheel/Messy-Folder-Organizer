@@ -1,13 +1,13 @@
 # coding=utf-8
-import logging
 import json
+import logging
 
 import PySimpleGUI as sg
 
-from . import App
+from resources.messages import CANCELLED, WORKING, FACTORY, STARTED, EXTS_LOADED
+from resources.names import THEME
+from .application import Application
 from .elements import MAIN_WINDOW
-from .messages import CANCELLED, WORKING, FACTORY, STARTED, EXTS_LOADED
-from .names import THEME
 
 
 class Factory:
@@ -20,11 +20,11 @@ class Factory:
         extensions = self._load_extensions()
         working_folder = self._set_working_folder()
         self.log.debug(STARTED)
-        return App(working_folder, extensions)
+        return Application(working_folder, extensions)
 
 
     def _load_extensions(self) -> dict[str, list[str]]:
-        with open("resource/extensions.json", "r") as extensions_file:
+        with open("resources/configs/extensions.json", "r") as extensions_file:
             self.log.debug(EXTS_LOADED)
             return json.load(extensions_file)
 

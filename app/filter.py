@@ -1,16 +1,16 @@
 # coding=utf-8
 import logging
-from os import path
+from os.path import isfile, join, splitext
 
-from .names import LOG_NAME
+from resources.names import LOG_NAME
 
 
 class Filter:
     def __init__(self, app, file_name):
         self.log = logging.getLogger(__name__)
-        self.file = path.join(app.working_folder, file_name)
-        self.file_name = path.splitext(file_name)[0]
-        self.file_extension = str.lower(path.splitext(self.file)[1])
+        self.file_path = join(app.working_folder, file_name)
+        self.file_name = splitext(file_name)[0]
+        self.file_extension = str.lower(splitext(file_name)[1])
         self.extensions = app.extensions
 
 
@@ -30,7 +30,7 @@ class Filter:
 
     @property
     def ignored_file(self):
-        if not path.isfile(self.file) or self.is_log:
+        if not isfile(self.file_path) or self.is_log:
             return True
         return False
 
