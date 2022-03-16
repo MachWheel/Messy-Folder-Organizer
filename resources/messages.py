@@ -32,9 +32,13 @@ def WORKING(folder):
     return f"\n[#] TRABALHANDO NA PASTA:\n'{folder}'\n"
 
 
+def DRAWN(view):
+    return f"\nJANELA DESENHADA: {view}\n"
+
+
 APP_TITLE = 'Organizador'
 
-FACTORY = '\nFACTORY INICIALIZADA.\n'
+FACTORY = '\nCRIANDO APLICAÇÃO...\n'
 
 STARTED = '\nAPLICAÇÃO INICIALIZADA.\n'
 

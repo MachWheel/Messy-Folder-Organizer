@@ -1,8 +1,9 @@
+# coding=utf-8
 import PySimpleGUI as sg
 from PySimpleGUI import BUTTON_TYPE_BROWSE_FOLDER, BUTTON_TYPE_READ_FORM
 
 from resources import icons
-from resources.messages import APP_TITLE, SELECT_FOLDER, DONE
+from resources.messages import APP_TITLE, SELECT_FOLDER
 from resources.names import THEME
 
 sg.theme(THEME)
@@ -23,7 +24,8 @@ BROWSE = sg.B(button_type=BUTTON_TYPE_BROWSE_FOLDER,
 START = sg.B(button_type=BUTTON_TYPE_READ_FORM,
              image_data=icons.START(),
              button_color=_COLOR,
-             tooltip="ORGANIZAR")
+             tooltip="ORGANIZAR",
+             key="-START_BTN-")
 
 
 INPUT = sg.In(k='-IN-', size=(30, 4), font="Default 14")
@@ -34,5 +36,5 @@ MAIN_WINDOW = sg.Window(
     [
         [TEXT],
         [BROWSE, INPUT, START]
-    ], size=(480, 150)
+    ], size=(480, 150), finalize=True
 )

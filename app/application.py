@@ -11,18 +11,28 @@ from resources.messages import (
 from .filter import Filter
 from .worker import Worker
 
-
 class Application:
-    def __init__(self, working_folder, extensions):
+    def __init__(self, extensions):
         self.log = logging.getLogger(__name__)
-        self.working_folder = working_folder
-        self.destination_folder = None
         self.extensions = extensions
+        self.working_folder = None
 
 
-    def start(self):
-        if not self._confirm_action():
-            return
+    def run(self):
+        window, event, values = sg.read_all_windows()
+
+        if event == "-START_BTN-" and values["-IN-"]:
+            self.working_folder = values["-IN-"]
+            if not self._confirm_action():
+                return
+            self._work()
+            return 'done'
+
+        if event == sg.WIN_CLOSED:
+            return 'done'
+
+
+    def _work(self):
         worker = Worker(self)
         for file_name in os.listdir(self.working_folder):
             f = Filter(self, file_name)
