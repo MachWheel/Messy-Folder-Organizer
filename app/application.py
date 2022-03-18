@@ -1,13 +1,15 @@
 # coding=utf-8
 
 import logging
-import os
+from os import startfile, listdir
+from os.path import realpath
 
 import PySimpleGUI as sg
 
 from resources.messages import (
     CANCELLED, CONFIRM, CONFIRMED, WORKING
 )
+from .elements import CONFIGURE_POPUP
 from .filter import Filter
 from .worker import Worker
 
@@ -23,20 +25,29 @@ class Application:
         window, event, values = sg.read_all_windows()
 
         if event == "-START_BTN-" and values["-IN-"]:
-            self.working_folder = values["-IN-"]
-            if not self._confirm_action():
-                return
-            self._work(values["-SUBDIR_CHECK-"])
-            return 'done'
+            self._start(work_on=values["-IN-"],
+                        make_subdir=values["-SUBDIR_CHECK-"])
+
+        if event == "-CONFIGURE_BTN-":
+            if CONFIGURE_POPUP() == 'OK':
+                startfile(realpath("resources/configs/extensions.json"))
 
         if event == sg.WIN_CLOSED:
             return 'done'
 
 
+    def _start(self, work_on, make_subdir):
+        self.working_folder = work_on
+        if not self._confirm_action():
+            return
+        self._work(make_subdir)
+        return 'done'
+
+
     def _work(self, subdir):
         self.log.info(WORKING(self.working_folder))
         worker = Worker(self.working_folder, subdir)
-        for file_name in os.listdir(self.working_folder):
+        for file_name in listdir(self.working_folder):
             f = Filter(self, file_name)
             if f.ignored_file:
                 continue

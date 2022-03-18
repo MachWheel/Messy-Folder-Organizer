@@ -3,7 +3,8 @@ import PySimpleGUI as sg
 from PySimpleGUI import BUTTON_TYPE_BROWSE_FOLDER, BUTTON_TYPE_READ_FORM
 
 from resources import icons
-from resources.messages import APP_TITLE, SELECT_FOLDER, SUBDIR_CHECK, SUBDIR_CHECK_TOOLTIP, CONFIGURE_TOOLTIP
+from resources.messages import APP_TITLE, SELECT_FOLDER, SUBDIR_CHECK, SUBDIR_CHECK_TOOLTIP, CONFIGURE_TOOLTIP, \
+    CONFIGURE_HELP
 from resources.names import THEME
 
 sg.theme(THEME)
@@ -37,12 +38,14 @@ CONFIGURE = sg.B(image_data=icons.CONFIGURE(),
                  button_color=_BTN_COLOR,
                  border_width=0,
                  tooltip=CONFIGURE_TOOLTIP,
-                 key="-CONFIGURE_BTN-")
+                 key="-CONFIGURE_BTN-",
+                 enable_events=True)
 
 INFO = sg.B(image_data=icons.INFO(),
             button_color=_BTN_COLOR,
             border_width=0,
-            key="-INFO_BTN-")
+            key="-INFO_BTN-",
+            enable_events=True)
 
 MAIN_WINDOW = sg.Window(
     APP_TITLE,
@@ -53,3 +56,8 @@ MAIN_WINDOW = sg.Window(
         [SUBDIR_CHECK, sg.Push(), CONFIGURE, INFO]
     ], finalize=True
 )
+
+def CONFIGURE_POPUP():
+    return sg.popup_ok_cancel(CONFIGURE_HELP,
+                              font="Default 14",
+                              no_titlebar=True)

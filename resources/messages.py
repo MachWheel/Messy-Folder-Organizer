@@ -64,7 +64,9 @@ SUBDIR_CHECK_TOOLTIP = "Se desmarcado, os arquivos serão organizados dentro da 
 
 CONFIGURE_TOOLTIP = "Alterar as extensões detectadas pelo programa"
 
-CONFIGURE_HELP = ("Você pode alterar as extensões detectadas "
-                  "pelo programa.\nBasta alterar o arquivo .json"
-                  "que será aberto e salvá-lo. Em seguida, reinicie"
-                  "o programa.\nDeseja alterar?")
+CONFIGURE_HELP = ("\nVocê pode alterar as extensões detectadas "
+                  "pelo programa.\n\n"
+                  "Basta alterar o arquivo .json que será aberto "
+                  "e salvá-lo.\n\n"
+                  "Em seguida, reinicie o programa.\n\n"
+                  "Deseja alterar?\n")
