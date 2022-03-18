@@ -3,7 +3,7 @@ import PySimpleGUI as sg
 from PySimpleGUI import BUTTON_TYPE_BROWSE_FOLDER, BUTTON_TYPE_READ_FORM
 
 from resources import icons
-from resources.messages import APP_TITLE, SELECT_FOLDER
+from resources.messages import APP_TITLE, SELECT_FOLDER, SUBDIR_CHECK, SUBDIR_CHECK_TOOLTIP
 from resources.names import THEME
 
 sg.theme(THEME)
@@ -30,11 +30,14 @@ START = sg.B(button_type=BUTTON_TYPE_READ_FORM,
 
 INPUT = sg.In(k='-IN-', size=(30, 4), font="Default 14")
 
+SUBDIR_CHECK = sg.CB(text=SUBDIR_CHECK, tooltip=SUBDIR_CHECK_TOOLTIP,
+                     default=False, key='-SUBDIR_CHECK-')
 
 MAIN_WINDOW = sg.Window(
     APP_TITLE,
     [
         [TEXT],
-        [BROWSE, INPUT, START]
+        [BROWSE, INPUT, START],
+        [SUBDIR_CHECK]
     ], size=(480, 150), finalize=True
 )

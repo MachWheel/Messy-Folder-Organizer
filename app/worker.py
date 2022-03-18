@@ -13,10 +13,13 @@ from .filter import Filter
 
 
 class Worker:
-    def __init__(self, app):
+    def __init__(self, working_dir, subdir: bool):
         self.log = logging.getLogger(__name__)
-        self.output_folder = f"{app.working_folder}/{MES_ANO()}"
-        self._make_output_folder()
+        if subdir:
+            self.output_folder = f"{working_dir}/{MES_ANO()}"
+            self._make_output_folder()
+        else:
+            self.output_folder = working_dir
 
 
     def _make_output_folder(self) -> None:

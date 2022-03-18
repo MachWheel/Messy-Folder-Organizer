@@ -1,4 +1,6 @@
 # coding=utf-8
+from resources.names import MES_ANO
+
 
 def CONFIRM(working_folder):
     return (f"Os arquivos da pasta:"
@@ -55,3 +57,7 @@ CANCELLED = "\nOPERAÇÃO ABORTADA.\n"
 CONFIRMED = "\nOPERAÇÃO CONFIRMADA.\n"
 
 FINISHED = '\nOPERAÇÃO FINALIZADA.\n'
+
+SUBDIR_CHECK = f'Organizar arquivos na subpasta "{MES_ANO()}"'
+
+SUBDIR_CHECK_TOOLTIP = "Se desmarcado, os arquivos serão organizados dentro da própria pasta escolhida."

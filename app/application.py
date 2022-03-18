@@ -6,7 +6,7 @@ import os
 import PySimpleGUI as sg
 
 from resources.messages import (
-    CANCELLED, CONFIRM, CONFIRMED
+    CANCELLED, CONFIRM, CONFIRMED, WORKING
 )
 from .filter import Filter
 from .worker import Worker
@@ -25,15 +25,16 @@ class Application:
             self.working_folder = values["-IN-"]
             if not self._confirm_action():
                 return
-            self._work()
+            self._work(values["-SUBDIR_CHECK-"])
             return 'done'
 
         if event == sg.WIN_CLOSED:
             return 'done'
 
 
-    def _work(self):
-        worker = Worker(self)
+    def _work(self, subdir):
+        self.log.info(WORKING(self.working_folder))
+        worker = Worker(self.working_folder, subdir)
         for file_name in os.listdir(self.working_folder):
             f = Filter(self, file_name)
             if f.ignored_file:
