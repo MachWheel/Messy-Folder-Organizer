@@ -14,3 +14,5 @@ LOG_NAME = (f"Registro "
             f"{datetime.now().strftime('%d_%m_%Y às %H-%M')}.log")
 
 THEME = "DarkBlue"
+
+IGNORED_CATEGORY = "Ignorados"
