@@ -11,6 +11,7 @@ from resources.messages import (
 from .filter import Filter
 from .worker import Worker
 
+
 class Application:
     def __init__(self, extensions):
         self.log = logging.getLogger(__name__)

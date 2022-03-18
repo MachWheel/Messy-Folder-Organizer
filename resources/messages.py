@@ -61,3 +61,10 @@ FINISHED = '\nOPERAÇÃO FINALIZADA.\n'
 SUBDIR_CHECK = f'Organizar arquivos na subpasta "{MES_ANO()}"'
 
 SUBDIR_CHECK_TOOLTIP = "Se desmarcado, os arquivos serão organizados dentro da própria pasta escolhida."
+
+CONFIGURE_TOOLTIP = "Alterar as extensões detectadas pelo programa"
+
+CONFIGURE_HELP = ("Você pode alterar as extensões detectadas "
+                  "pelo programa.\nBasta alterar o arquivo .json"
+                  "que será aberto e salvá-lo. Em seguida, reinicie"
+                  "o programa.\nDeseja alterar?")

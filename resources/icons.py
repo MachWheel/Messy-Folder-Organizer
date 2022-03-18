@@ -8,3 +8,11 @@ def START():
 def FOLDER():
     with open("resources/graphics/folder.png", "rb") as png_file:
         return base64.b64encode(png_file.read())
+
+def CONFIGURE():
+    with open("resources/graphics/configure.png", "rb") as png_file:
+        return base64.b64encode(png_file.read())
+
+def INFO():
+    with open("resources/graphics/info.png", "rb") as png_file:
+        return base64.b64encode(png_file.read())

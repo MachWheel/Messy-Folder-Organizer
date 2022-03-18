@@ -1,10 +1,10 @@
 # coding=utf-8
 import logging.config
 
-from app.factory import Factory
-from app.application import Application
 from PySimpleGUI import Window
 
+from app.application import Application
+from app.factory import Factory
 from resources.messages import DRAWN, STARTED
 
 
