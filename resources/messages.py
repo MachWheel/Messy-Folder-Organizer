@@ -70,3 +70,7 @@ CONFIGURE_HELP = ("\nVocê pode alterar as extensões detectadas "
                   "e salvá-lo.\n\n"
                   "Em seguida, reinicie o programa.\n\n"
                   "Deseja alterar?\n")
+
+INFO_HELP = ("\nOi! Te ajudei de alguma forma?\n"
+             "Um café seria legal =)\n\n"
+             "Chave PIX: wyllerhacks@gmail.com\n")

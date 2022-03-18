@@ -9,7 +9,7 @@ import PySimpleGUI as sg
 from resources.messages import (
     CANCELLED, CONFIRM, CONFIRMED, WORKING
 )
-from .elements import CONFIGURE_POPUP
+from .elements import CONFIGURE_POPUP, INFO_POPUP
 from .filter import Filter
 from .worker import Worker
 
@@ -31,6 +31,12 @@ class Application:
         if event == "-CONFIGURE_BTN-":
             if CONFIGURE_POPUP() == 'OK':
                 startfile(realpath("resources/configs/extensions.json"))
+                return 'done'
+
+        if event == "-INFO_BTN-":
+            window.hide()
+            if INFO_POPUP():
+                window.un_hide()
 
         if event == sg.WIN_CLOSED:
             return 'done'
