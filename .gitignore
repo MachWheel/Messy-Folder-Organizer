@@ -6,3 +6,6 @@
 /.git/
 *.log
 /.idea/
+/resources/messages_PTBR.py
+/resources/names_PTBR.py
+/resources/configs/extensions_PTBR.json

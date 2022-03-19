@@ -2,7 +2,7 @@
 import logging
 from os.path import isfile, join, splitext
 
-from resources.names import IGNORED_CATEGORY, LOG_NAME
+from resources.names import IGNORED_CATEGORY, LOG_NAME, OTHER_CATEGORY
 
 
 class Filter:
@@ -20,7 +20,7 @@ class Filter:
             if self.file_extension in entries:
                 name = category.capitalize()
                 return name
-        return "Outros"
+        return OTHER_CATEGORY
 
 
     @property
@@ -30,7 +30,7 @@ class Filter:
 
     @property
     def ignored_file(self):
-        if not isfile(self.file_path) or self.is_log:
+        if not isfile(self.file_path) or self.is_log or self.ignored_category:
             return True
         return False
 
