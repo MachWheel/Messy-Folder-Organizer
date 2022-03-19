@@ -3,6 +3,7 @@ import json
 import logging
 
 from resources.messages import FACTORY, EXTS_LOADED
+from resources.names import EXTENSIONS_PATH
 from .application import Application
 from .elements import MAIN_WINDOW
 
@@ -15,10 +16,10 @@ class Factory:
 
     def create_app(self):
         extensions = self._load_extensions()
-        return Application(extensions), MAIN_WINDOW
+        return Application(extensions), MAIN_WINDOW()
 
 
     def _load_extensions(self) -> dict[str, list[str]]:
-        with open("resources/configs/extensions.json", "r") as extensions_file:
+        with open(EXTENSIONS_PATH, "r") as extensions_file:
             self.log.debug(EXTS_LOADED)
             return json.load(extensions_file)

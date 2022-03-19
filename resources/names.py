@@ -19,3 +19,4 @@ OTHER_CATEGORY = "Other"
 
 DONATE_LINK = "https://www.paypal.com/donate/?hosted_button_id=RNDCMNV4YWHX4"
 
+EXTENSIONS_PATH = "resources/configs/extensions.json"

@@ -2,20 +2,18 @@ import logging
 import shutil
 from os import mkdir, path, startfile
 
-import PySimpleGUI as sg
-
 from resources.messages import (
-    CREATED, DESTINATION, DONE, MOVED, IGNORED,
+    CREATED, DESTINATION, MOVED, IGNORED,
     EXISTING, FINISHED
 )
 from resources.names import MONTH_YEAR
+from .elements import DONE_POPUP
 from .filter import Filter
 
-
 class Worker:
-    def __init__(self, working_dir, subdir: bool):
+    def __init__(self, working_dir, make_subdir: bool):
         self.log = logging.getLogger(__name__)
-        if subdir:
+        if make_subdir:
             self.output_folder = f"{working_dir}/{MONTH_YEAR()}"
             self._make_output_folder()
         else:
@@ -53,7 +51,7 @@ class Worker:
 
 
     def terminate(self) -> str:
-        if sg.popup_ok(DONE):
+        if DONE_POPUP():
             startfile(path.realpath(self.output_folder))
             self.log.debug(FINISHED)
             startfile('app_log.log')

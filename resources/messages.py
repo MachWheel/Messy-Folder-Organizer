@@ -3,11 +3,14 @@ from resources.names import MONTH_YEAR
 
 
 def CONFIRM(working_folder):
-    return (f"Files inside the selected folder:"
-            f"\n'{working_folder}'\n"
-            f"Will be organized accordingly "
-            f"with their types.\n\n"
-            f"DO YOU WISH TO CONTINUE?")
+    return (f"\nFiles inside the selected folder:"
+            f"\n\n"
+            f"{working_folder}"
+            f"\n\n"
+            f"are going to be moved based on "
+            f"their types."
+            f"\n\n"
+            f"DO YOU WISH TO CONTINUE?\n")
 
 
 def MOVED(f):
@@ -31,7 +34,7 @@ def CREATED(folder):
 
 
 def WORKING(folder):
-    return f"\n[#] WORKING IN FOLDER:\n'{folder}'\n"
+    return f"\n[#] WORKING FOLDER:\n'{folder}'\n"
 
 
 def DRAWN(view):
@@ -55,7 +58,7 @@ DONE = (f"\nFOLDER ORGANIZED!\n"
 
 EXTS_LOADED = "\nEXTENSIONS LOADED.\n"
 
-CANCELLED = "\nOPERATION ABORTED.\n"
+CANCELLED = "\n\nOPERATION ABORTED.\n\n"
 
 CONFIRMED = "\nOPERATION CONFIRMED.\n"
 
