@@ -82,5 +82,11 @@ CONFIGURE_HELP = ("\nYou can change extensions detected by the application!"
 
 INFO_HELP = ("\nHey! Was I of any help?\n"
              "A coffee would be nice =)\n\n"
-             "(International) Paypal - click here to open!\n"
-             "(Brazil) Chave PIX: wyllerhacks@gmail.com\n")
+             "(International) Paypal - just press Yes\n"
+             "(Brazil) Chave PIX: wyllerhacks@gmail.com\n\n"
+             "Press Yes to open paypal.\n"
+             "Press No to return.\n")
+
+BROWSE_TOOLTIP = "Choose folder"
+
+START_TOOLTIP = "Start organizing"

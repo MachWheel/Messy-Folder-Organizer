@@ -9,7 +9,7 @@ from resources import icons
 from resources.messages import (
     APP_TITLE, SELECT_FOLDER, SUBDIR_CHECK,
     SUBDIR_CHECK_TOOLTIP, CONFIGURE_TOOLTIP,
-    CONFIGURE_HELP, INFO_HELP
+    CONFIGURE_HELP, INFO_HELP, BROWSE_TOOLTIP, START_TOOLTIP
 )
 from resources.names import THEME
 
@@ -24,13 +24,13 @@ BROWSE_BTN = sg.B(button_type=BUTTON_TYPE_BROWSE_FOLDER,
                   button_color=_BTN_COLOR,
                   border_width=0,
                   target='-IN-',
-                  tooltip="ESCOLHER PASTA")
+                  tooltip=BROWSE_TOOLTIP)
 
 START_BTN = sg.B(button_type=BUTTON_TYPE_READ_FORM,
                  image_data=icons.START(),
                  button_color=_BTN_COLOR,
                  border_width=0,
-                 tooltip="ORGANIZAR",
+                 tooltip=START_TOOLTIP,
                  key="-START_BTN-")
 
 H_SEP = sg.HSep(p=((10, 10), (20, 10)))
@@ -74,6 +74,6 @@ def CONFIGURE_POPUP():
                               no_titlebar=True)
 
 def INFO_POPUP():
-    return sg.popup_ok(INFO_HELP,
-                       font="Default 14",
-                       no_titlebar=True)
+    return sg.popup_yes_no(INFO_HELP,
+                           font="Default 14",
+                           no_titlebar=True)

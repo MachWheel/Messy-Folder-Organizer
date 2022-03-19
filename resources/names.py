@@ -16,3 +16,5 @@ LOG_NAME = (f"Log "
 THEME = "DarkBlue"
 
 IGNORED_CATEGORY = "Ignored"
+
+DONATE_LINK = "https://www.paypal.com/donate/?hosted_button_id=RNDCMNV4YWHX4"

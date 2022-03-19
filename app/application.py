@@ -1,6 +1,7 @@
 # coding=utf-8
 
 import logging
+import webbrowser
 from os import startfile, listdir
 from os.path import realpath
 
@@ -9,6 +10,7 @@ import PySimpleGUI as sg
 from resources.messages import (
     CANCELLED, CONFIRM, CONFIRMED, WORKING
 )
+from resources.names import DONATE_LINK
 from .elements import CONFIGURE_POPUP, INFO_POPUP
 from .filter import Filter
 from .worker import Worker
@@ -35,8 +37,9 @@ class Application:
 
         if event == "-INFO_BTN-":
             window.hide()
-            if INFO_POPUP():
-                window.un_hide()
+            if INFO_POPUP() == 'Yes':
+                webbrowser.open(DONATE_LINK, new=0)
+            window.un_hide()
 
         if event == sg.WIN_CLOSED:
             return 'done'
