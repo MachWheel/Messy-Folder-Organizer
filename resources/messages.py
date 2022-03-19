@@ -1,5 +1,5 @@
 # coding=utf-8
-from resources.names_EN import MONTH_YEAR
+from resources.names import MONTH_YEAR
 
 
 def CONFIRM(working_folder):
