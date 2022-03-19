@@ -1,6 +1,7 @@
 {
   "ignored": [
-    ".exe", ".ico", ".lnk", ".py"
+    ".exe", ".ico", ".lnk", ".py",
+    ".ini"
   ],
 
   "documents": [

@@ -27,8 +27,9 @@ class Application:
         window, event, values = sg.read_all_windows()
 
         if event == "-START_BTN-" and values["-IN-"]:
-            self._start(work_on=values["-IN-"],
-                        make_subdir=values["-SUBDIR_CHECK-"])
+            return self._start(
+                work_on=values["-IN-"],
+                make_subdir=values["-SUBDIR_CHECK-"])
 
         if event == "-CONFIGURE_BTN-":
             if CONFIGURE_POPUP() == 'OK':

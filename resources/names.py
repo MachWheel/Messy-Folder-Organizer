@@ -9,9 +9,7 @@ def MONTH_YEAR():
     month_name = calendar.month_name[month_num]
     return f"{month_name} {now.year}"
 
-
-LOG_NAME = (f"Log "
-            f"{datetime.now().strftime('%m_%d_%Y at %H-%M')}.log")
+LOG_NAME = "app_log.log"
 
 THEME = "DarkBlue"
 
