@@ -2,7 +2,7 @@
 import logging
 from os.path import isfile, join, splitext
 
-from resources.names import LOG_NAME
+from resources.names import IGNORED_CATEGORY, LOG_NAME
 
 
 class Filter:
@@ -25,7 +25,7 @@ class Filter:
 
     @property
     def ignored_category(self):
-        return True if self.category_name == "Ignorados" else False
+        return True if self.category_name == IGNORED_CATEGORY else False
 
 
     @property

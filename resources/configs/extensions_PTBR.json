@@ -1,16 +1,16 @@
 {
-  "ignored": [
+  "ignorados": [
     ".exe", ".ico", ".lnk", ".py"
   ],
 
-  "documents": [
+  "documentos": [
     ".doc", ".docx", ".htm", ".odt",
     ".pdf", ".xls", ".xlsx", ".xlsm",
     ".ods", ".ppt", ".pptx", ".txt",
     ".mobi", ".epub"
   ],
 
-  "pictures": [
+  "imagens": [
     ".ai", ".bmp", ".gif",
     ".jpeg", ".jpg", ".png", ".ps",
     ".psd", ".svg", ".tif", ".tiff"
@@ -29,13 +29,13 @@
     ".wpl"
   ],
 
-  "programs": [
+  "programas": [
     ".apk", ".bat", ".bin", ".cgi",
     ".pl", ".com", ".gadget",
     ".jar", ".msi", ".wsf"
   ],
 
-  "compacted": [
+  "compactados": [
     ".7z", ".arj", ".deb", ".pkg",
     ".rar", ".rpm", ".tar.gz", ".z",
     ".zip", ".iso"

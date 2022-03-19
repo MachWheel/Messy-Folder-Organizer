@@ -1,76 +1,86 @@
 # coding=utf-8
-from resources.names import MES_ANO
+from resources.names_EN import MONTH_YEAR
 
 
 def CONFIRM(working_folder):
-    return (f"Os arquivos da pasta:"
+    return (f"Files inside the selected folder:"
             f"\n'{working_folder}'\n"
-            f"Serão organizados de acordo "
-            f"com os seus tipos.\n\n"
-            f"DESEJA CONTINUAR?")
+            f"Will be organized accordingly "
+            f"with their types.\n\n"
+            f"DO YOU WISH TO CONTINUE?")
 
 
 def MOVED(f):
-    return f"\n[#] ARQUIVO '{f.file_name}{f.file_extension}' MOVIDO PARA: '{f.category_name}'\n"
+    return f"\n[#] FILE '{f.file_name}{f.file_extension}' MOVED TO: '{f.category_name}'\n"
 
 
 def IGNORED(f):
-    return f"\n[!] ARQUIVO '{f.file_name}{f.file_extension}' IGNORADO."
+    return f"\n[!] FILE '{f.file_name}{f.file_extension}' IGNORED."
 
 
 def DESTINATION(folder):
-    return f"\n[!] OS ARQUIVOS SERÃO MOVIDOS PARA:\n'{folder}'\n"
+    return f"\n[!] FILES BEING MOVED TO:\n'{folder}'\n"
 
 
 def EXISTING(folder):
-    return f"\n[!] UTILIZANDO PASTA EXISTENTE:\n'{folder}'\n"
+    return f"\n[!] USING EXISTING FOLDER:\n'{folder}'\n"
 
 
 def CREATED(folder):
-    return f"\n[#] PASTA '{folder}' CRIADA.\n"
+    return f"\n[#] FOLDER '{folder}' CREATED.\n"
 
 
 def WORKING(folder):
-    return f"\n[#] TRABALHANDO NA PASTA:\n'{folder}'\n"
+    return f"\n[#] WORKING IN FOLDER:\n'{folder}'\n"
 
 
 def DRAWN(view):
-    return f"\nJANELA DESENHADA: {view}\n"
+    return f"\nDRAWN WINDOW: {view}\n"
 
 
-APP_TITLE = 'Organizador'
+APP_TITLE = 'Messy Folder Organizer'
 
-FACTORY = '\nCRIANDO APLICAÇÃO...\n'
+FACTORY = '\nCREATING APPLICATION...\n'
 
-STARTED = '\nAPLICAÇÃO INICIALIZADA.\n'
+STARTED = '\nAPPLICATION INITIALIZED.\n'
 
-SELECT_FOLDER = 'Escolha uma pasta bagunçada para organizar:'
+SELECT_FOLDER = 'Choose a messy folder to organize:'
 
-DONE = (f"ARQUIVOS ORGANIZADOS!\n"
-        f"PRESSIONE OK PARA ABRIR"
-        f"A PASTA CRIADA")
+DONE = (f"\nFOLDER ORGANIZED!\n"
+        f"PRESS OK TO OPEN IT.\n\n"
+        f"The log file will also "
+        f"open so you can see which "
+        f"files were moved and where.\n\n"
+        f"Have a great day!\n")
 
-EXTS_LOADED = "\nEXTENSÕES CARREGADAS.\n"
+EXTS_LOADED = "\nEXTENSIONS LOADED.\n"
 
-CANCELLED = "\nOPERAÇÃO ABORTADA.\n"
+CANCELLED = "\nOPERATION ABORTED.\n"
 
-CONFIRMED = "\nOPERAÇÃO CONFIRMADA.\n"
+CONFIRMED = "\nOPERATION CONFIRMED.\n"
 
-FINISHED = '\nOPERAÇÃO FINALIZADA.\n'
+FINISHED = '\nOPERATION FINISHED.\n'
 
-SUBDIR_CHECK = f'Organizar arquivos na subpasta "{MES_ANO()}"'
+SUBDIR_CHECK = f'Organize files in subfolder "{MONTH_YEAR()}"'
 
-SUBDIR_CHECK_TOOLTIP = "Se desmarcado, os arquivos serão organizados dentro da própria pasta escolhida."
+SUBDIR_CHECK_TOOLTIP = "If unchecked, files will be organized inside the selected folder."
 
-CONFIGURE_TOOLTIP = "Alterar as extensões detectadas pelo programa"
+CONFIGURE_TOOLTIP = "Change extensions detected by the application"
 
-CONFIGURE_HELP = ("\nVocê pode alterar as extensões detectadas "
-                  "pelo programa.\n\n"
-                  "Basta alterar o arquivo .json que será aberto "
-                  "e salvá-lo.\n\n"
-                  "Em seguida, reinicie o programa.\n\n"
-                  "Deseja alterar?\n")
+CONFIGURE_HELP = ("\nYou can change extensions detected by the application!"
+                  "\n\n"
+                  "Just change the .json file that will be opened and save it.\n"
+                  "Then, restart the application."
+                  "\n\n"
+                  "You can add new categories or change existing ones the way "
+                  "you like it."
+                  "\n\n"
+                  "(Just don't change the name of ignored category, but feel "
+                  "free to add new extensions to it.)"
+                  "\n\n"
+                  "Do you wish to proceed?\n")
 
-INFO_HELP = ("\nOi! Te ajudei de alguma forma?\n"
-             "Um café seria legal =)\n\n"
-             "Chave PIX: wyllerhacks@gmail.com\n")
+INFO_HELP = ("\nHey! Was I of any help?\n"
+             "A coffee would be nice =)\n\n"
+             "(International) Paypal - click here to open!\n"
+             "(Brazil) Chave PIX: wyllerhacks@gmail.com\n")

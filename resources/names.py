@@ -1,16 +1,18 @@
 # coding=utf-8
 from datetime import datetime
+import calendar
 
 
-def MES_ANO():
-    data = datetime.now()
-    meses = ('Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
-             'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro')
-    mes = data.month - 1  # INDICE DO MES
-    return meses[mes] + " " + str(data.year)
+def MONTH_YEAR():
+    now = datetime.now()
+    month_num = now.month - 1
+    month_name = calendar.month_name[month_num]
+    return f"{month_name} {now.year}"
 
 
-LOG_NAME = (f"Registro "
-            f"{datetime.now().strftime('%d_%m_%Y às %H-%M')}.log")
+LOG_NAME = (f"Log "
+            f"{datetime.now().strftime('%m_%d_%Y at %H-%M')}.log")
 
 THEME = "DarkBlue"
+
+IGNORED_CATEGORY = "Ignored"

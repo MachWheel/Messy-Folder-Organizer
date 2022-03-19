@@ -8,7 +8,7 @@ from resources.messages import (
     CREATED, DESTINATION, DONE, MOVED, IGNORED,
     EXISTING, FINISHED
 )
-from resources.names import MES_ANO
+from resources.names import MONTH_YEAR
 from .filter import Filter
 
 
@@ -16,7 +16,7 @@ class Worker:
     def __init__(self, working_dir, subdir: bool):
         self.log = logging.getLogger(__name__)
         if subdir:
-            self.output_folder = f"{working_dir}/{MES_ANO()}"
+            self.output_folder = f"{working_dir}/{MONTH_YEAR()}"
             self._make_output_folder()
         else:
             self.output_folder = working_dir
@@ -52,9 +52,9 @@ class Worker:
             self.log.error(e)
 
 
-    def terminate(self) -> None:
+    def terminate(self) -> str:
         if sg.popup_ok(DONE):
             startfile(path.realpath(self.output_folder))
             self.log.debug(FINISHED)
             startfile('app_log.log')
-            return
+            return 'done'
