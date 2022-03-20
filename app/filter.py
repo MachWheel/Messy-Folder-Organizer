@@ -6,35 +6,24 @@ from resources.names import IGNORED_CATEGORY, LOG_NAME, OTHER_CATEGORY
 
 
 class Filter:
-    def __init__(self, app, file_name):
+    def __init__(self, working_dir, extensions):
         self.log = logging.getLogger(__name__)
-        self.file_path = join(app.working_folder, file_name)
-        self.file_name = splitext(file_name)[0]
-        self.file_extension = str.lower(splitext(file_name)[1])
-        self.extensions = app.extensions
+        self.working_dir = working_dir
+        self.extensions = extensions
 
 
-    @property
-    def category_name(self) -> str:
+    def category_name(self, file) -> str:
+        file_extension = str.lower(splitext(file)[1])
         for category, entries in self.extensions.items():
-            if self.file_extension in entries:
+            if file_extension in entries:
                 name = category.capitalize()
                 return name
         return OTHER_CATEGORY
 
 
-    @property
-    def ignored_category(self):
-        return True if self.category_name == IGNORED_CATEGORY else False
-
-
-    @property
-    def ignored_file(self):
-        if not isfile(self.file_path) or self.is_log or self.ignored_category:
-            return True
-        return False
-
-
-    @property
-    def is_log(self) -> bool:
-        return self.file_name == LOG_NAME
+    def ignored_file(self, file):
+        file_path = join(self.working_dir, file)
+        file_name = splitext(file)[0]
+        return not isfile(file_path) \
+               or file_name == LOG_NAME \
+               or self.category_name(file) == IGNORED_CATEGORY

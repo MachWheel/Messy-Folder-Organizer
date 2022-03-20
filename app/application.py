@@ -1,83 +1,37 @@
 # coding=utf-8
-
+import json
 import logging
-import webbrowser
-from os import startfile, listdir
-from os.path import realpath
+from os import listdir
 
-import PySimpleGUI as sg
-
-from resources.messages import (
-    CANCELLED, CONFIRM, CONFIRMED,
-    WORKING
-)
-from resources.names import (
-    DONATE_LINK, EXTENSIONS_PATH
-)
-from .elements import (
-    CONFIGURE_POPUP, INFO_POPUP,
-    CONFIRM_POPUP, ABORTED_POPUP
-)
+from resources.messages import EXTS_LOADED
+from resources.names import EXTENSIONS_PATH
+from .controller import Controller
 from .filter import Filter
 from .worker import Worker
 
 
 class Application:
-    def __init__(self, extensions):
+    def __init__(self):
         self.log = logging.getLogger(__name__)
-        self.extensions = extensions
+        self.controller = Controller()
+
+    def running(self):
+        return self.controller.read_events(self)
 
 
-    def run(self):
-        window, event, values = sg.read_all_windows()
-
-        if event == "-START_BTN-":
-            work_on = values["-IN-"]
-            make_subdir = values["-SUBDIR_CHECK-"]
-            return self._start(work_on, make_subdir)
-
-        if event == "-CONFIGURE_BTN-":
-            if CONFIGURE_POPUP() == 'OK':
-                startfile(realpath(EXTENSIONS_PATH))
-                return 'done'
-
-        if event == "-INFO_BTN-":
-            window.hide()
-            if INFO_POPUP() == 'Yes':
-                webbrowser.open(DONATE_LINK, new=0)
-            window.un_hide()
-
-        if event == sg.WIN_CLOSED:
-            return 'done'
-
-
-    def _start(self, work_on, make_subdir):
-        if not work_on:
-            return
-        self.working_folder = work_on
-        if not self._confirm_action():
-            return
-        self._work(make_subdir)
-        return 'done'
-
-
-    def _work(self, make_subdir):
-        msg = WORKING(self.working_folder)
-        self.log.info(msg)
-        worker = Worker(self.working_folder, make_subdir)
-        for file_name in listdir(self.working_folder):
-            f = Filter(self, file_name)
-            if f.ignored_file:
+    def start(self, working_dir, make_subdir):
+        work = Worker(working_dir, make_subdir)
+        exts = self._load_extensions()
+        check = Filter(working_dir, exts)
+        for file in listdir(working_dir):
+            if check.ignored_file(file):
                 continue
-            worker.move_file(f)
-        worker.terminate()
+            category = check.category_name(file)
+            work.move_file(file, category)
+        work.terminate()
 
 
-    def _confirm_action(self):
-        msg = CONFIRM(self.working_folder)
-        if CONFIRM_POPUP(msg) != 'OK':
-            ABORTED_POPUP()
-            self.log.info(CANCELLED)
-            return False
-        self.log.debug(CONFIRMED)
-        return True
+    def _load_extensions(self) -> dict[str, list[str]]:
+        with open(EXTENSIONS_PATH, "r") as extensions_file:
+            self.log.debug(EXTS_LOADED)
+            return json.load(extensions_file)

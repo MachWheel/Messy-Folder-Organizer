@@ -4,8 +4,8 @@ import logging.config
 from PySimpleGUI import Window
 
 from app.application import Application
-from app.factory import Factory
-from resources.messages import DRAWN, STARTED
+from app.elements import MAIN_WINDOW
+from resources.messages import DRAWN, STARTED, INITIALIZING
 
 
 def main(app: Application, view: Window):
@@ -13,12 +13,11 @@ def main(app: Application, view: Window):
     log.debug(STARTED)
     while True:
         log.debug(DRAWN(view))
-        status = app.run()
-        if status == 'done':
+        running_status = app.running()
+        if running_status == 'done':
             break
-
 
 if __name__ == "__main__":
     logging.config.fileConfig("resources/configs/log_config.ini")
-    factory = Factory()
-    main(*factory.create_app())
+    logging.debug(INITIALIZING)
+    main(Application(), MAIN_WINDOW())

@@ -13,12 +13,12 @@ def CONFIRM(working_folder):
             f"DO YOU WISH TO CONTINUE?\n")
 
 
-def MOVED(f):
-    return f"\n[#] FILE '{f.file_name}{f.file_extension}' MOVED TO: '{f.category_name}'\n"
+def MOVED(file, destination):
+    return f"\n[#] FILE '{file}' MOVED TO: '{destination}'\n"
 
 
-def IGNORED(f):
-    return f"\n[!] FILE '{f.file_name}{f.file_extension}' IGNORED."
+def IGNORED(file):
+    return f"\n[!] FILE '{file}' IGNORED."
 
 
 def DESTINATION(folder):
@@ -43,7 +43,7 @@ def DRAWN(view):
 
 APP_TITLE = 'Messy Folder Organizer'
 
-FACTORY = '\nCREATING APPLICATION...\n'
+INITIALIZING = '\nCREATING APPLICATION...\n'
 
 STARTED = '\nAPPLICATION INITIALIZED.\n'
 
