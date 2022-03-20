@@ -1,7 +1,9 @@
 # Messy Folder Organizer
 ## *A quick and simple way to organize your messy folders*
 
+
 # How to use it
+![MAIN_DEMO](https://s7.gifyu.com/images/MFO1.1.gif)
 Just open the app, choose a messy folder and start it!
 
 # How it works
