@@ -7,6 +7,8 @@
 ![MAIN_DEMO](https://s7.gifyu.com/images/MFO1.1.gif)
 
 
+
+
 # How it works
 Messy Folder Organizer works by automatically categorizing and moving all the files inside a 
 folder based on their extensions.
@@ -14,6 +16,10 @@ folder based on their extensions.
 In that way just files are moved, not folders.
 
 It does that through a simple .json file located at **resources/configs/extensions.json**
+
+### You can edit the file to change supported extensions, creating or modifying existing categories.
+
+![CONFIG_DEMO](https://s7.gifyu.com/images/ezgif.com-gif-maker27c95d2834741325.gif)
 
 # Supported extensions
 

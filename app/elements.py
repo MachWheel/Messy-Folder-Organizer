@@ -59,14 +59,14 @@ _MSG_FONT = "Default 14"
 _MAIN_TEXT = sg.Text(SELECT_FOLDER, font="Default 14 bold", p=((10, 10), (20, 10)))
 
 _BROWSE_BTN = sg.B(button_type=BUTTON_TYPE_BROWSE_FOLDER,
-                   image_data=icons.FOLDER(),
+                   image_data=icons.FOLDER,
                    button_color=_BTN_COLOR,
                    border_width=0,
                    target='-IN-',
                    tooltip=BROWSE_TOOLTIP)
 
 _START_BTN = sg.B(button_type=BUTTON_TYPE_READ_FORM,
-                  image_data=icons.START(),
+                  image_data=icons.START,
                   button_color=_BTN_COLOR,
                   border_width=0,
                   tooltip=START_TOOLTIP,
@@ -79,14 +79,14 @@ _INPUT = sg.In(k='-IN-', size=(30, 4), font=_MSG_FONT)
 _SUBDIR_CHECK = sg.CB(text=SUBDIR_CHECK, tooltip=SUBDIR_CHECK_TOOLTIP,
                       default=False, key='-SUBDIR_CHECK-')
 
-_CONFIG_BTN = sg.B(image_data=icons.CONFIGURE(),
+_CONFIG_BTN = sg.B(image_data=icons.CONFIGURE,
                    button_color=_BTN_COLOR,
                    border_width=0,
                    tooltip=CONFIGURE_TOOLTIP,
                    key="-CONFIGURE_BTN-",
                    enable_events=True)
 
-_INFO_BTN = sg.B(image_data=icons.INFO(),
+_INFO_BTN = sg.B(image_data=icons.INFO,
                  button_color=_BTN_COLOR,
                  border_width=0,
                  key="-INFO_BTN-",

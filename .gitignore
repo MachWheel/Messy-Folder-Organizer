@@ -8,3 +8,5 @@
 /resources/messages_PTBR.py
 /resources/names_PTBR.py
 /resources/configs/extensions_PTBR.json
+/app/__pycache__/
+/resources/__pycache__/
