@@ -17,7 +17,7 @@ In that way just files are moved, not folders.
 
 It does that through a simple .json file located at **resources/configs/extensions.json**
 
-### You can edit the file to change supported extensions, creating or modifying existing categories.
+### You can also edit the file to change supported extensions, creating or modifying existing categories. There's a shortcut for it:
 
 ![CONFIG_DEMO](https://s7.gifyu.com/images/ezgif.com-gif-maker27c95d2834741325.gif)
 
