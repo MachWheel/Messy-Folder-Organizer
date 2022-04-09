@@ -1,9 +1,5 @@
 # coding=utf-8
 import PySimpleGUI as sg
-from PySimpleGUI import (
-    BUTTON_TYPE_BROWSE_FOLDER,
-    BUTTON_TYPE_READ_FORM
-)
 
 from resources import icons
 from resources.messages import (
@@ -15,6 +11,7 @@ from resources.messages import (
 from resources.names import THEME
 
 sg.theme(THEME)
+settings = sg.UserSettings(filename='settings.json', path=r'./resources/configs')
 
 def MAIN_WINDOW():
     return sg.Window(
@@ -58,14 +55,14 @@ _MSG_FONT = "Default 14"
 
 _MAIN_TEXT = sg.Text(SELECT_FOLDER, font="Default 14 bold", p=((10, 10), (20, 10)))
 
-_BROWSE_BTN = sg.B(button_type=BUTTON_TYPE_BROWSE_FOLDER,
+_BROWSE_BTN = sg.B(button_type=sg.BUTTON_TYPE_BROWSE_FOLDER,
                    image_data=icons.FOLDER,
                    button_color=_BTN_COLOR,
                    border_width=0,
                    target='-IN-',
                    tooltip=BROWSE_TOOLTIP)
 
-_START_BTN = sg.B(button_type=BUTTON_TYPE_READ_FORM,
+_START_BTN = sg.B(button_type=sg.BUTTON_TYPE_READ_FORM,
                   image_data=icons.START,
                   button_color=_BTN_COLOR,
                   border_width=0,
@@ -74,10 +71,13 @@ _START_BTN = sg.B(button_type=BUTTON_TYPE_READ_FORM,
 
 _H_SEP = sg.HSep(p=((10, 10), (20, 10)))
 
-_INPUT = sg.In(k='-IN-', size=(30, 4), font=_MSG_FONT)
+_INPUT = sg.In(default_text=settings.get('-IN-', ''),
+               key='-IN-', size=(30, 4), font=_MSG_FONT)
 
-_SUBDIR_CHECK = sg.CB(text=SUBDIR_CHECK, tooltip=SUBDIR_CHECK_TOOLTIP,
-                      default=False, key='-SUBDIR_CHECK-')
+_SUBDIR_CHECK = sg.CB(text=SUBDIR_CHECK,
+                      default=settings.get('-SUBDIR_CHECK-', False),
+                      tooltip=SUBDIR_CHECK_TOOLTIP,
+                      key='-SUBDIR_CHECK-')
 
 _CONFIG_BTN = sg.B(image_data=icons.CONFIGURE,
                    button_color=_BTN_COLOR,

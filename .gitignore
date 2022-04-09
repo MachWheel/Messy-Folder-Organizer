@@ -10,3 +10,6 @@
 /resources/configs/extensions_PTBR.json
 /app/__pycache__/
 /resources/__pycache__/
+/compile/build/
+/compile/dist/
+/resources/configs/settings.json

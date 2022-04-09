@@ -3,7 +3,7 @@ import webbrowser
 from os import startfile
 from os.path import realpath
 
-from PySimpleGUI import read_all_windows, WIN_CLOSED
+from PySimpleGUI import read_all_windows, WIN_CLOSED, UserSettings
 
 from app.elements import CONFIGURE_POPUP, INFO_POPUP, CONFIRM_POPUP, ABORTED_POPUP
 from resources.messages import CONFIRM, CANCELLED, CONFIRMED
@@ -13,6 +13,7 @@ from resources.names import EXTENSIONS_PATH, DONATE_LINK
 class Controller:
     def __init__(self):
         self.log = logging.getLogger(__name__)
+
 
     def read_events(self, app):
         window, event, values = read_all_windows()
@@ -37,6 +38,9 @@ class Controller:
             window.un_hide()
 
         if event == WIN_CLOSED:
+            settings = UserSettings(filename='settings.json', path=r'./resources/configs')
+            values.pop('', None)
+            settings.write_new_dictionary(values)
             return 'done'
 
 
