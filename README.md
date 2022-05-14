@@ -1,13 +1,11 @@
-# Messy Folder Organizer
-### *A quick and simple way to organize your messy folders.*
+<p align="center"><img src="https://i.imgur.com/xQMVkec.png" alt="Messy Folder Organizer Logo"></p>
+<h1 align="center">Messy Folder Organizer</h1>
+<p align="center"><i>A quick and simple way to organize your messy folders.</i></p>
 
+![MAIN_DEMO](https://s7.gifyu.com/images/MFO1.1.gif)
 
 # How to use it
 ### Just open the app, choose a messy folder and start it!
-![MAIN_DEMO](https://s7.gifyu.com/images/MFO1.1.gif)
-
-
-
 
 # How it works
 Messy Folder Organizer works by automatically categorizing and moving all the files inside a 
