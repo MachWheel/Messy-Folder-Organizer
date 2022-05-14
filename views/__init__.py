@@ -20,31 +20,25 @@ def MAIN_WINDOW():
 
 
 def CONFIGURE_POPUP():
-    return sg.popup_ok_cancel(txt.CONFIGURE_HELP,
-                              font=txt.MSG_FONT,
-                              no_titlebar=True)
+    return sg.popup_ok_cancel(txt.CONFIGURE_HELP, font=txt.MSG_FONT, no_titlebar=True)
 
 
 def INFO_POPUP():
-    return sg.popup_yes_no(txt.INFO_HELP,
-                           font=txt.MSG_FONT,
-                           no_titlebar=True)
+    return sg.popup_yes_no(txt.INFO_HELP, font=txt.MSG_FONT, no_titlebar=True)
 
 
 def CONFIRM_POPUP(msg):
-    return sg.popup_ok_cancel(msg,
-                              font=txt.MSG_FONT,
-                              no_titlebar=True)
+    return sg.popup_ok_cancel(msg, font=txt.MSG_FONT, no_titlebar=True)
 
 
 def ABORTED_POPUP():
-    return sg.popup(txt.CANCELLED,
-                    font=txt.MSG_FONT,
-                    no_titlebar=True)
+    return sg.popup(txt.CANCELLED, font=txt.MSG_FONT, no_titlebar=True)
 
 
 def DONE_POPUP():
-    return sg.popup_ok(txt.DONE,
-                       font=txt.MSG_FONT,
-                       no_titlebar=True)
+    return sg.popup_ok(txt.DONE, font=txt.MSG_FONT, no_titlebar=True)
+
+
+def ERROR_POPUP(msg):
+    return sg.popup_error(msg, font=txt.MSG_FONT, no_titlebar=True)
 

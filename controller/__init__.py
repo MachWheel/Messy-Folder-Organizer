@@ -1,7 +1,7 @@
 import logging
 import webbrowser
 from os import startfile, listdir
-from os.path import realpath
+from os.path import realpath, isdir
 
 import PySimpleGUI as sg
 
@@ -23,7 +23,7 @@ class Controller:
             working_dir = values["-IN-"]
             make_subdir = values["-SUBDIR_CHECK-"]
             self._save_settings(values)
-            if not self._start_check(working_dir):
+            if not self._validate_input(working_dir):
                 return
             self.organize(working_dir, make_subdir)
             return 'done'
@@ -54,16 +54,18 @@ class Controller:
         worker.terminate()
 
 
-    def _start_check(self, working_dir):
-        if not working_dir:
+    def _validate_input(self, working_dir):
+        folder = working_dir
+        if not folder or not isdir(folder):
+            views.ERROR_POPUP(txt.INVALID(folder))
             return False
         msg = txt.CONFIRM(working_dir)
-        if views.CONFIRM_POPUP(msg) != 'OK':
-            views.ABORTED_POPUP()
-            self.log.info(txt.CANCELLED)
-            return False
-        self.log.debug(txt.CONFIRMED)
-        return True
+        if views.CONFIRM_POPUP(msg) == 'OK':
+            self.log.debug(txt.CONFIRMED)
+            return True
+        views.ABORTED_POPUP()
+        self.log.info(txt.CANCELLED)
+        return False
 
 
     @staticmethod

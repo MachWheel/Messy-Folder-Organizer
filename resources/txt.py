@@ -36,6 +36,8 @@ def WORKING_AT(folder):
 def DRAWN(view):
     return f"\nDRAWN WINDOW: {view}\n"
 
+def INVALID(folder):
+    return f"\nYou have chosen an invalid folder to organize:\n{folder}\n"
 
 APP_TITLE = 'Messy Folder Organizer v1.2'
 
