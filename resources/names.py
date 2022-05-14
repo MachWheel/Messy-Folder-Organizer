@@ -1,4 +1,3 @@
-# coding=utf-8
 import calendar
 from datetime import datetime
 
@@ -10,6 +9,7 @@ def MONTH_YEAR():
     return f"{month_name} {now.year}"
 
 LOG_NAME = "mfo_log.log"
+LOG_SETTINGS = "mfo_config/log_config.ini"
 
 THEME = "DarkBlue"
 
@@ -20,3 +20,6 @@ OTHER_CATEGORY = "Other"
 DONATE_LINK = "https://www.paypal.com/donate/?hosted_button_id=RNDCMNV4YWHX4"
 
 EXTENSIONS_PATH = "mfo_config/extensions.json"
+
+SETTINGS_FILE = 'settings.json'
+SETTINGS_PATH = r'./mfo_config'

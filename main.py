@@ -1,23 +1,21 @@
 # coding=utf-8
 import logging.config
 
-from PySimpleGUI import Window
-
-from app.application import Application
-from app.views import MAIN_WINDOW
-from resources.messages import DRAWN, STARTED, INITIALIZING
+from controller import Controller
+from resources import names, txt
+from views import MAIN_WINDOW
 
 
-def main(app: Application, view: Window):
+def main(app: Controller):
     log = logging.getLogger(__name__)
-    log.debug(STARTED)
+    log.debug(txt.STARTED)
     while True:
-        log.debug(DRAWN(view))
-        running_status = app.running()
-        if running_status == 'done':
+        log.debug(txt.DRAWN(view))
+        if app.read_events() == 'done':
             break
 
 if __name__ == "__main__":
-    logging.config.fileConfig("mfo_config/log_config.ini")
-    logging.debug(INITIALIZING)
-    main(Application(), MAIN_WINDOW())
+    logging.config.fileConfig(names.LOG_SETTINGS)
+    logging.debug(txt.INITIALIZING)
+    view = MAIN_WINDOW()
+    main(Controller(view))

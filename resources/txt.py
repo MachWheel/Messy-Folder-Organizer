@@ -21,10 +21,6 @@ def IGNORED(file):
     return f"\n[!] FILE '{file}' IGNORED."
 
 
-def DESTINATION(folder):
-    return f"\n[!] FILES BEING MOVED TO:\n'{folder}'\n"
-
-
 def EXISTING(folder):
     return f"\n[!] USING EXISTING FOLDER:\n'{folder}'\n"
 
@@ -33,7 +29,7 @@ def CREATED(folder):
     return f"\n[#] FOLDER '{folder}' CREATED.\n"
 
 
-def WORKING(folder):
+def WORKING_AT(folder):
     return f"\n[#] WORKING FOLDER:\n'{folder}'\n"
 
 
@@ -41,7 +37,7 @@ def DRAWN(view):
     return f"\nDRAWN WINDOW: {view}\n"
 
 
-APP_TITLE = 'Messy Folder Organizer v1.1'
+APP_TITLE = 'Messy Folder Organizer v1.2'
 
 INITIALIZING = '\nCREATING APPLICATION...\n'
 
@@ -93,3 +89,5 @@ INFO_HELP = ("\nHey! Was I of any help?\n"
 BROWSE_TOOLTIP = "Choose folder"
 
 START_TOOLTIP = "Start organizing"
+
+MSG_FONT = "Default 14"
