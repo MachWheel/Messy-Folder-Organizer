@@ -41,7 +41,7 @@ def DRAWN(view):
     return f"\nDRAWN WINDOW: {view}\n"
 
 
-APP_TITLE = 'Messy Folder Organizer'
+APP_TITLE = 'Messy Folder Organizer v1.1'
 
 INITIALIZING = '\nCREATING APPLICATION...\n'
 
