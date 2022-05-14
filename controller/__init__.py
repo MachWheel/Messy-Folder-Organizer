@@ -23,7 +23,9 @@ class Controller:
             working_dir = values["-IN-"]
             make_subdir = values["-SUBDIR_CHECK-"]
             self._save_settings(values)
+            self.view.hide()
             if not self._validate_input(working_dir):
+                self.view.un_hide()
                 return
             self.organize(working_dir, make_subdir)
             return 'done'
