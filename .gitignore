@@ -5,11 +5,9 @@
 /.git/
 *.log
 /.idea/
-/resources/messages_PTBR.py
-/resources/names_PTBR.py
-/resources/configs/extensions_PTBR.json
 /app/__pycache__/
 /resources/__pycache__/
 /compile/build/
 /compile/dist/
-/resources/configs/settings.json
+/compile/dist/*.spec
+/mfo_config/settings.json

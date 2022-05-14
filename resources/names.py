@@ -9,7 +9,7 @@ def MONTH_YEAR():
     month_name = calendar.month_name[month_num]
     return f"{month_name} {now.year}"
 
-LOG_NAME = "app_log.log"
+LOG_NAME = "mfo_log.log"
 
 THEME = "DarkBlue"
 
@@ -19,4 +19,4 @@ OTHER_CATEGORY = "Other"
 
 DONATE_LINK = "https://www.paypal.com/donate/?hosted_button_id=RNDCMNV4YWHX4"
 
-EXTENSIONS_PATH = "resources/configs/extensions.json"
+EXTENSIONS_PATH = "mfo_config/extensions.json"

@@ -11,7 +11,7 @@ from resources.messages import (
 from resources.names import THEME
 
 sg.theme(THEME)
-settings = sg.UserSettings(filename='settings.json', path=r'./resources/configs')
+settings = sg.UserSettings(filename='settings.json', path=r'./mfo_config')
 
 def MAIN_WINDOW():
     return sg.Window(

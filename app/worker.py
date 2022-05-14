@@ -8,7 +8,7 @@ from resources.messages import (
     EXISTING, FINISHED, WORKING
 )
 from resources.names import MONTH_YEAR
-from .elements import DONE_POPUP
+from .views import DONE_POPUP
 
 
 class Worker:

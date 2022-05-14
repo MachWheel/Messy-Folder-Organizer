@@ -4,7 +4,7 @@ import logging.config
 from PySimpleGUI import Window
 
 from app.application import Application
-from app.elements import MAIN_WINDOW
+from app.views import MAIN_WINDOW
 from resources.messages import DRAWN, STARTED, INITIALIZING
 
 
@@ -18,6 +18,6 @@ def main(app: Application, view: Window):
             break
 
 if __name__ == "__main__":
-    logging.config.fileConfig("resources/configs/log_config.ini")
+    logging.config.fileConfig("mfo_config/log_config.ini")
     logging.debug(INITIALIZING)
     main(Application(), MAIN_WINDOW())
