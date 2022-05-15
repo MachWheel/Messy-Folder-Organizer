@@ -6,7 +6,7 @@ from os.path import realpath, isdir
 import PySimpleGUI as sg
 
 import views
-from resources import names, txt
+from shared import files, txt
 from .organizer import Organizer
 
 
@@ -32,13 +32,13 @@ class Controller:
 
         if event == "-CONFIGURE_BTN-":
             if views.CONFIGURE_POPUP() == 'OK':
-                startfile(realpath(names.EXTENSIONS_PATH))
+                startfile(realpath(files.EXTENSIONS))
                 return 'done'
 
         if event == "-INFO_BTN-":
             self.view.hide()
             if views.INFO_POPUP() == 'Yes':
-                webbrowser.open(names.DONATE_LINK, new=0)
+                webbrowser.open(txt.DONATE_LINK, new=0)
             self.view.un_hide()
 
         if event == sg.WIN_CLOSED:
@@ -74,7 +74,7 @@ class Controller:
     def _save_settings(values):
         if not values:
             return
-        file, path = names.SETTINGS_FILE, names.SETTINGS_PATH
+        file, path = files.SG_CONFIG, files.DIR_CONFIG
         settings = sg.UserSettings(file, path)
         values.pop('', None)
         settings.write_new_dictionary(values)

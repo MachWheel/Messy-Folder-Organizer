@@ -1,5 +1,5 @@
-# coding=utf-8
-from resources.names import MONTH_YEAR
+import calendar
+from datetime import datetime
 
 
 def CONFIRM(working_folder):
@@ -39,11 +39,26 @@ def DRAWN(view):
 def INVALID(folder):
     return f"\nYou have chosen an invalid folder to organize:\n{folder}\n"
 
-APP_TITLE = 'Messy Folder Organizer v1.2'
+APP_TITLE = 'Messy Folder Organizer v1.3'
 
 INITIALIZING = '\nCREATING APPLICATION...\n'
 
 STARTED = '\nAPPLICATION INITIALIZED.\n'
+
+
+BROWSE_TOOLTIP = "Choose folder"
+
+START_TOOLTIP = "Start organizing"
+
+MSG_FONT = "Default 14"
+
+THEME = "DarkBlue"
+
+IGNORED_CATEGORY = "Ignored"
+
+OTHER_CATEGORY = "Other"
+
+DONATE_LINK = "https://www.paypal.com/donate/?hosted_button_id=RNDCMNV4YWHX4"
 
 SELECT_FOLDER = 'Choose a messy folder to organize:'
 
@@ -61,6 +76,14 @@ CANCELLED = "\n\nOPERATION ABORTED.\n\n"
 CONFIRMED = "\nOPERATION CONFIRMED.\n"
 
 FINISHED = '\nOPERATION FINISHED.\n'
+
+
+def MONTH_YEAR():
+    now = datetime.now()
+    month_num = now.month
+    month_name = calendar.month_name[month_num]
+    return f"{month_name} {now.year}"
+
 
 SUBDIR_CHECK = f'Organize files in subfolder "{MONTH_YEAR()}"'
 
@@ -87,9 +110,3 @@ INFO_HELP = ("\nHey! Was I of any help?\n"
              "(Brazil) Chave PIX: wyllerhacks@gmail.com\n\n"
              "Press Yes to open paypal.\n"
              "Press No to return.\n")
-
-BROWSE_TOOLTIP = "Choose folder"
-
-START_TOOLTIP = "Start organizing"
-
-MSG_FONT = "Default 14"

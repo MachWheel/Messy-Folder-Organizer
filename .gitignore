@@ -6,8 +6,8 @@
 *.log
 /.idea/
 /controller/__pycache__/
-/resources/__pycache__/
+/shared/__pycache__/
 /compile/build/
 /compile/dist/
-/compile/dist/*.spec
-/mfo_config/settings.json
+/compile/*.spec
+/mfo_config/

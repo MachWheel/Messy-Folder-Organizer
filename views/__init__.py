@@ -3,11 +3,11 @@ import PySimpleGUI as sg
 from . import _icons
 from . import _gui
 
-from resources import names, txt
+from shared import txt
 
 
 def MAIN_WINDOW():
-    sg.theme(names.THEME)
+    sg.theme(txt.THEME)
     return sg.Window(
         txt.APP_TITLE,
         [
@@ -41,4 +41,3 @@ def DONE_POPUP():
 
 def ERROR_POPUP(msg):
     return sg.popup_error(msg, font=txt.MSG_FONT, no_titlebar=True)
-

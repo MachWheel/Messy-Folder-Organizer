@@ -12,9 +12,6 @@ ECHO:
 ECHO The generated app will be in the ./dist folder
 ECHO:
 PAUSE
-MKDIR dist\resources\configs
-ROBOCOPY "..\mfo_config" "dist\resources\configs" extensions.json /mt /z
-ROBOCOPY "..\mfo_config" "dist\resources\configs" log_config.ini /mt /z
 pyinstaller -w --onefile ..\main.py --icon app.ico --name Messy-Folder-Organizer
 ECHO:
 ECHO DONE! PRESS ANYTHING TO OPEN OUTPUT FOLDER

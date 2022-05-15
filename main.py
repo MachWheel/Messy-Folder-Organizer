@@ -1,8 +1,8 @@
-# coding=utf-8
 import logging.config
 
+import seed
 from controller import Controller
-from resources import names, txt
+from shared import files, txt
 from views import MAIN_WINDOW
 
 
@@ -15,7 +15,9 @@ def main(app: Controller):
             break
 
 if __name__ == "__main__":
-    logging.config.fileConfig(names.LOG_SETTINGS)
+    seed.make_config_files()
+    # seed.update()  # COMMENT BEFORE COMPILING
+    logging.config.fileConfig(files.LOG_CONFIG)
     logging.debug(txt.INITIALIZING)
     view = MAIN_WINDOW()
     main(Controller(view))

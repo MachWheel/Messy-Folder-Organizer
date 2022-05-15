@@ -4,8 +4,8 @@ import shutil
 from os import mkdir, path, startfile
 from os.path import join, splitext, isfile
 
-from resources import names, txt
-from views import DONE_POPUP
+import views
+from shared import files, txt
 
 
 class Organizer:
@@ -14,10 +14,10 @@ class Organizer:
         self.working_dir = working_dir
         self.output_dir = working_dir
         if make_subdir:
-            subdir = f"{working_dir}/{names.MONTH_YEAR()}"
+            subdir = f"{working_dir}/{txt.MONTH_YEAR()}"
             self.output_dir = self._make_folder(subdir)
         self.log.info(txt.WORKING_AT(working_dir))
-        with open(names.EXTENSIONS_PATH, "r") as extensions_file:
+        with open(files.EXTENSIONS, "r") as extensions_file:
             self.extensions = json.load(extensions_file)
             self.log.debug(txt.EXTS_LOADED)
 
@@ -35,10 +35,10 @@ class Organizer:
 
 
     def terminate(self) -> str:
-        if DONE_POPUP():
+        if views.DONE_POPUP():
             startfile(path.realpath(self.output_dir))
             self.log.debug(txt.FINISHED)
-            startfile(names.LOG_NAME)
+            startfile(files.LOG)
             return 'done'
 
 
@@ -48,15 +48,15 @@ class Organizer:
             if file_extension in entries:
                 name = category.capitalize()
                 return name
-        return names.OTHER_CATEGORY
+        return txt.OTHER_CATEGORY
 
 
     def ignored_file(self, file) -> bool:
         file_path = join(self.working_dir, file)
         file_name = splitext(file)[0]
         return not isfile(file_path) \
-               or file_name == names.LOG_NAME \
-               or self.get_category(file) == names.IGNORED_CATEGORY
+               or file_name == files.LOG \
+               or self.get_category(file) == txt.IGNORED_CATEGORY
 
 
     def _make_folder(self, folder_path) -> str:

@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
 
-from resources import txt, names
+from shared import txt, files
 from . import _icons
 
 
@@ -39,7 +39,7 @@ def SEPARATOR():
 
 
 def FOLDER_INPUT():
-    settings = sg.UserSettings(names.SETTINGS_FILE, names.SETTINGS_PATH)
+    settings = sg.UserSettings(files.SG_CONFIG, files.DIR_CONFIG)
     return sg.In(
         default_text=settings.get('-IN-', ''),
         key='-IN-',
@@ -49,7 +49,7 @@ def FOLDER_INPUT():
 
 
 def SUBDIR_CHECK():
-    settings = sg.UserSettings(names.SETTINGS_FILE, names.SETTINGS_PATH)
+    settings = sg.UserSettings(files.SG_CONFIG, files.DIR_CONFIG)
     return sg.CB(
         text=txt.SUBDIR_CHECK,
         default=settings.get('-SUBDIR_CHECK-', False),
