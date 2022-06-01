@@ -1,7 +1,6 @@
 import PySimpleGUI as sg
 
-from shared import txt, files
-from . import _icons
+from shared import txt, files, icons
 
 
 def HEADING():
@@ -15,8 +14,8 @@ def HEADING():
 def BROWSE_BTN():
     return sg.B(
         button_type=sg.BUTTON_TYPE_BROWSE_FOLDER,
-        image_data=_icons.FOLDER,
-        button_color=_icons.BTN_COLOR(),
+        image_data=icons.FOLDER,
+        button_color=icons.BTN_COLOR(),
         border_width=0,
         target='-IN-',
         tooltip=txt.BROWSE_TOOLTIP
@@ -26,8 +25,8 @@ def BROWSE_BTN():
 def START_BTN():
     return sg.B(
         button_type=sg.BUTTON_TYPE_READ_FORM,
-        image_data=_icons.START,
-        button_color=_icons.BTN_COLOR(),
+        image_data=icons.START,
+        button_color=icons.BTN_COLOR(),
         border_width=0,
         tooltip=txt.START_TOOLTIP,
         key="-START_BTN-"
@@ -60,8 +59,8 @@ def SUBDIR_CHECK():
 
 def CONFIG_BTN():
     return sg.B(
-        image_data=_icons.CONFIGURE,
-        button_color=_icons.BTN_COLOR(),
+        image_data=icons.CONFIGURE,
+        button_color=icons.BTN_COLOR(),
         border_width=0,
         tooltip=txt.CONFIGURE_TOOLTIP,
         key="-CONFIGURE_BTN-",
@@ -71,8 +70,8 @@ def CONFIG_BTN():
 
 def INFO_BTN():
     return sg.B(
-        image_data=_icons.INFO,
-        button_color=_icons.BTN_COLOR(),
+        image_data=icons.INFO,
+        button_color=icons.BTN_COLOR(),
         border_width=0,
         key="-INFO_BTN-",
         enable_events=True

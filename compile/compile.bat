@@ -12,7 +12,7 @@ ECHO:
 ECHO The generated app will be in the ./dist folder
 ECHO:
 PAUSE
-pyinstaller -w --onefile ..\main.py --icon app.ico --name Messy-Folder-Organizer
+pyinstaller -w --onefile ..\main.py --icon app.ico --name Messy-Folder-Organizer --splash splashfile.png
 ECHO:
 ECHO DONE! PRESS ANYTHING TO OPEN OUTPUT FOLDER
 ECHO:
